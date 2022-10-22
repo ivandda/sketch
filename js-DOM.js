@@ -3,8 +3,8 @@ let containerDiv = document.querySelector('#containerDiv')
 let smallDivSlider = document.querySelector('#smallDivSlider')
 let numberOfDivs = 10
 let paintMethod = 'mouseover'
-let borderX = true
-let paintBorder = false
+let borderX = false
+let paintBorder = true
 let arr = []
 
 smallDivSlider.addEventListener('click',()=>{
@@ -125,7 +125,7 @@ function paint(){
     if(color === 'black') {
         this.style.backgroundColor = 'black'
         if(paintBorder === true) {
-            this.style.border = 'black'
+            this.style.boxShadow = '0 0 5px black'
         }
 
     }
