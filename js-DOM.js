@@ -1,7 +1,12 @@
 
 let containerDiv = document.querySelector('#containerDiv')
 let numberOfDivs = 12
+let paintMethod = 'mouseover'
+let border = false
 let arr = []
+
+
+// COLORS-------------------------------------------------------------------------------------
 
 let color = ""
 color = 'black'
@@ -43,6 +48,14 @@ function submitColorErase(){
     color = 'white'
 }
 
+function submitEraseAll(){
+    console.log("ERASE ALL");
+    for (let i = 0; i < arr.length; i++) {
+        arr[i].style.backgroundColor = 'white'
+    }
+
+}
+
 manualColorPicker.addEventListener('input',()=>{
     let colorManualColorPicker = manualColorPicker.value;
     color = colorManualColorPicker
@@ -74,7 +87,7 @@ function getPastelColor(){
     return pastel;
 }
 
-
+// COLORS-------------------------------------------------------------------------------------
 
 for(let i = 0; i < numberOfDivs; i++) {
     let bigDiv = document.createElement('div'); bigDiv.classList.add("bigDiv");
@@ -91,20 +104,29 @@ for(let i = 0; i < numberOfDivs; i++) {
 
 
 for (let i = 0; i < arr.length; i++) {
-    arr[i].addEventListener('mouseover', paint)
+    arr[i].addEventListener(paintMethod, paint)
 }
 
 function paint(){
     if(color === 'black') {
         this.style.backgroundColor = 'black'
+        if(border === true) {
+            this.style.border = 'black'
+        }
+
     }
 
     if(color === 'rainbow') {
         this.style.backgroundColor = getRandomColor()
+        if(border === true) this.style.border = getRandomColor()
     }
 
     if(color === 'pastel') {
         this.style.backgroundColor = getPastelColor()
+        if(border === true) this.style.border = getRandomColor()
     }
-    else this.style.backgroundColor = color
+    else {
+        this.style.backgroundColor = color
+        if(border === true) this.style.border = color
+    }
 }
