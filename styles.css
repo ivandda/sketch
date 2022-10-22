@@ -35,9 +35,9 @@ body{
     background-color: white;
 }
 
-.smallDiv + .smallDiv{
-    border: 1px solid #f4f4f4;
-}
+/*.smallDiv + .smallDiv{*/
+/*    border: 1px solid #f4f4f4;*/
+/*}*/
 
 @media (max-width: 750px) {
     #containerDiv {

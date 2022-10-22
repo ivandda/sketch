@@ -1,18 +1,26 @@
 
 let containerDiv = document.querySelector('#containerDiv')
-let numberOfDivs = 12
+let smallDivSlider = document.querySelector('#smallDivSlider')
+let numberOfDivs = 10
 let paintMethod = 'mouseover'
-let border = false
+let borderX = true
+let paintBorder = false
 let arr = []
 
+smallDivSlider.addEventListener('click',()=>{
+    numberOfDivs = smallDivSlider.value
+    console.log((numberOfDivs))
+    containerDiv.replaceChildren()
+    createDivs()
+})
 
 // COLORS-------------------------------------------------------------------------------------
 
 let color = ""
 color = 'black'
 let manualColorPicker = document.querySelector('#manualColorPicker')
-let stringColorPicker = document.querySelector('#stringColorPickerColorPicker')
-let submitButton = document.querySelector('#submitStringColorPicker')
+// let stringColorPicker = document.querySelector('#stringColorPickerColorPicker')
+// let submitButton = document.querySelector('#submitStringColorPicker')
 
 function submitColor(){
     function camelize(str) {
@@ -89,28 +97,34 @@ function getPastelColor(){
 
 // COLORS-------------------------------------------------------------------------------------
 
-for(let i = 0; i < numberOfDivs; i++) {
-    let bigDiv = document.createElement('div'); bigDiv.classList.add("bigDiv");
-    containerDiv.appendChild(bigDiv);
+function createDivs() {
+    for (let i = 0; i < numberOfDivs; i++) {
+        let bigDiv = document.createElement('div');
+        bigDiv.classList.add("bigDiv");
+        containerDiv.appendChild(bigDiv);
 
-    for(let i = 0; i < numberOfDivs; i++) {
-        let smallDiv = document.createElement('div');
-        smallDiv.classList.add("smallDiv");
-        bigDiv.appendChild(smallDiv);
+        for (let i = 0; i < numberOfDivs; i++) {
+            let smallDiv = document.createElement('div');
+            smallDiv.classList.add("smallDiv");
+            if (borderX === true) smallDiv.style.border = '1px solid #f4f4f4';
+            bigDiv.appendChild(smallDiv);
 
-        arr.push(smallDiv)
+            arr.push(smallDiv)
+        }
+    }
+
+
+    for (let i = 0; i < arr.length; i++) {
+        arr[i].addEventListener(paintMethod, paint)
     }
 }
 
-
-for (let i = 0; i < arr.length; i++) {
-    arr[i].addEventListener(paintMethod, paint)
-}
+createDivs()
 
 function paint(){
     if(color === 'black') {
         this.style.backgroundColor = 'black'
-        if(border === true) {
+        if(paintBorder === true) {
             this.style.border = 'black'
         }
 
@@ -118,15 +132,15 @@ function paint(){
 
     if(color === 'rainbow') {
         this.style.backgroundColor = getRandomColor()
-        if(border === true) this.style.border = getRandomColor()
+        if(paintBorder === true) this.style.border = getRandomColor()
     }
 
     if(color === 'pastel') {
         this.style.backgroundColor = getPastelColor()
-        if(border === true) this.style.border = getRandomColor()
+        if(paintBorder === true) this.style.border = getRandomColor()
     }
     else {
         this.style.backgroundColor = color
-        if(border === true) this.style.border = color
+        if(paintBorder === true) this.style.border = color
     }
 }
