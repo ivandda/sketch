@@ -132,15 +132,16 @@ function paint(){
 
     if(color === 'rainbow') {
         this.style.backgroundColor = getRandomColor()
-        if(paintBorder === true) this.style.border = getRandomColor()
+        if(paintBorder === true) this.style.boxShadow = '0 0 0 0'
     }
 
     if(color === 'pastel') {
         this.style.backgroundColor = getPastelColor()
-        if(paintBorder === true) this.style.border = getRandomColor()
+        // if(paintBorder === true) this.style.boxShadow = getRandomColor()
+        if(paintBorder === true) this.style.boxShadow = '0 0 0 0'
     }
     else {
         this.style.backgroundColor = color
-        if(paintBorder === true) this.style.border = color
+        if(paintBorder === true) this.style.boxShadow = '0 0 0 0'
     }
 }
