@@ -1,11 +1,29 @@
+let paintMethod = 'click'
+if (confirm("Hover mode?")) {
+    paintMethod = "mouseover";
+} else {
+    paintMethod = 'click';
+}
 
+let clickHoverSwitch = document.querySelector('#clickHoverSwitch')
 let containerDiv = document.querySelector('#containerDiv')
 let smallDivSlider = document.querySelector('#smallDivSlider')
 let numberOfDivs = 10
-let paintMethod = 'mouseover'
+// let paintMethod = 'click'
 let borderX = false
 let paintBorder = true
 let arr = []
+
+// const hoverOption = document.querySelector('#hoverOption');
+//
+// hoverOption.addEventListener('click',()=>{
+//     console.log(hoverOption.checked)
+//
+//     if(hoverOption.checked === true){
+//         paintMethod = 'mouseover'
+//         console.log('hover')
+//     }
+// })
 
 smallDivSlider.addEventListener('click',()=>{
     numberOfDivs = smallDivSlider.value
@@ -13,6 +31,7 @@ smallDivSlider.addEventListener('click',()=>{
     containerDiv.replaceChildren()
     createDivs()
 })
+
 
 // COLORS-------------------------------------------------------------------------------------
 
@@ -60,6 +79,7 @@ function submitEraseAll(){
     console.log("ERASE ALL");
     for (let i = 0; i < arr.length; i++) {
         arr[i].style.backgroundColor = 'white'
+        arr[i].style.boxShadow = '0 0 0 1px lightgrey'
     }
 
 }
@@ -127,7 +147,13 @@ function paint(){
         if(paintBorder === true) {
             this.style.boxShadow = '0 0 5px black'
         }
+    }
 
+    if(color === 'white') {
+        this.style.backgroundColor = 'white'
+        if(paintBorder === true) {
+            this.style.boxShadow = '0 0 0 1px lightgrey'
+        }
     }
 
     if(color === 'rainbow') {

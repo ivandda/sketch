@@ -20,10 +20,17 @@
         <div id="colorPicker">
 
             <div id="slideContainer">
-                <label>
-                    <input type="range" min="10" max="50" value="0" class="slider1" id="smallDivSlider">
-                </label>
+                <p>Pick size</p>
+                <input type="range" min="10" max="50" value="0" class="slider" id="smallDivSlider" >
             </div>
+
+<!--            <label>-->
+<!--                <input type="checkbox" id="hoverOption" name="accept"> Hover-->
+<!--            </label>-->
+
+<!--            <label>-->
+<!--                <input type="checkbox" id="accept" name="accept"> Accept-->
+<!--            </label>-->
 
             <label>
                 <input type="text" id="stringColorPicker" placeholder="Type a color">
@@ -37,7 +44,8 @@
             <button type="button" onclick="submitColorErase()"> Eraser </button>
             <button type="button" onclick="submitEraseAll()"> Erase All </button>
 
-            <label>
+            <label id="containerColorPicker">
+                <p>Pick color</p>
                 <input type="color" id="manualColorPicker">
             </label>
 
